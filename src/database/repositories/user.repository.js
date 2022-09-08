@@ -1,31 +1,29 @@
-export class UserRepository {
-  constructor(userModel) {
-    this.model = userModel;
-  }
+import { userModel } from "../Schemas/user.Schema";
 
+export class UserRepository {
   async create(userBody) {
-    return await this.model.create(userBody);
+    return await userModel.create(userBody);
   }
 
   async getByEmail(userEmail) {
-    return await this.model.findOne({ email: userEmail });
+    return await userModel.findOne({ email: userEmail });
   }
 
   async getById(userId) {
-    return await this.model.findOne({ id: userId });
+    return await userModel.findOne({ id: userId });
   }
 
   async getAll() {
-    return await this.model.find();
+    return await userModel.find();
   }
 
   async update(userId, userBody) {
-    return await this.model.findOneAndUpdate({ id: userId }, userBody, {
+    return await userModel.findOneAndUpdate({ id: userId }, userBody, {
       new: true,
     });
   }
 
   async delete(userId) {
-    return await this.model.findOneAndDelete({ id: userId });
+    return await userModel.findOneAndDelete({ id: userId });
   }
 }
