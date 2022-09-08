@@ -103,7 +103,6 @@ export class UserController {
   async updateUserController(req, res) {
     try {
       const userId = req.params.id;
-
       const userBody = req.body;
 
       if (!userId || !userBody) {
