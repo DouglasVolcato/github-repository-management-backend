@@ -1,4 +1,4 @@
-export class GetAllRepositoryUseCase {
+export class GetAllRepoUseCase {
   constructor(repository) {
     this.repository = repository;
   }

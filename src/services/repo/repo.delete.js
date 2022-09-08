@@ -1,4 +1,4 @@
-export class DeleteRepositoryUseCase {
+export class DeleteRepoUseCase {
   constructor(repository) {
     this.repository = repository;
   }

@@ -1,12 +1,12 @@
-import Repository from "../../entities/repo.entity";
+import Repo from "../../entities/repo.entity";
 
-export class CreateRepositoryUseCase {
+export class CreateRepoUseCase {
   constructor(repository) {
     this.repository = repository;
   }
   async execute(repoBody) {
-    const newRepo = new Repository(repoBody);
+    const newRepo = new Repo(repoBody);
     newRepo.validate();
-    return await this.repository.create(newRepo.getRepository());
+    return await this.repository.create(newRepo.getRepo());
   }
 }

@@ -1,6 +1,6 @@
 import { userModel } from "../Schemas/user.Schema";
 
-export class RepositoryRepository {
+export class RepoRepository {
   async create(userId, repoBody) {
     return await userModel.findOneAndUpdate(
       { id: userId },

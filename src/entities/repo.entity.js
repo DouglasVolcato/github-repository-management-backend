@@ -1,9 +1,9 @@
 export class Repository {
-  constructor(repository) {
-    this.name = repository.name;
-    this.link = repository.link;
-    this.priority = repository.priority;
-    this.note = repository.note;
+  constructor(repo) {
+    this.name = repo.name;
+    this.link = repo.link;
+    this.priority = repo.priority;
+    this.note = repo.note;
   }
 
   validate() {
@@ -12,7 +12,7 @@ export class Repository {
     }
   }
 
-  getRepository() {
+  getRepo() {
     return {
       name: this.name,
       link: this.link,
