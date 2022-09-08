@@ -8,13 +8,14 @@ export class RepoController {
 
   async createRepoController(req, res) {
     try {
+      const userId = req.params.id;
       const repoBody = req.body;
 
-      if (!repoBody) {
-        throw new Error("Invalid body in request.");
+      if (!repoBody || !userId) {
+        throw new Error("Invalid request.");
       }
 
-      const newRepo = await this.createRepoUseCase.execute(repoBody);
+      const newRepo = await this.createRepoUseCase.execute(userId, repoBody);
 
       if (!newRepo) {
         throw new Error("Error in creation.");
