@@ -1,5 +1,4 @@
-import { Schema, model } from "mongoose";
-import { stringify } from "querystring";
+import { Schema } from "mongoose";
 
 export const repositorySchema = new Schema({
   id: { type: String, required: true },
