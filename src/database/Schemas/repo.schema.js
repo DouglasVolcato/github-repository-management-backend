@@ -1,6 +1,6 @@
 import { Schema } from "mongoose";
 
-export const repositorySchema = new Schema({
+export const repoSchema = new Schema({
   name: { type: String, required: true },
   link: { type: String, required: true },
   priority: { type: String, required: true },
