@@ -1,10 +1,10 @@
 import { userModel } from "../Schemas/user.Schema";
 
 export class RepositoryRepository {
-  async create(userId, repo) {
+  async create(userId, repoBody) {
     return await userModel.findOneAndUpdate(
       { id: userId },
-      { $push: { repositories: repo } },
+      { $push: { repositories: repoBody } },
       { new: true }
     ).repositories;
   }
@@ -13,7 +13,7 @@ export class RepositoryRepository {
     return await userModel.findOne({ id: userId }).repositories;
   }
 
-  async update(userId, nameRepo, repo) {
+  async update(userId, nameRepo, repoBody) {
     await userModel.findOneAndUpdate(
       { id: userId },
       { $pull: { repositories: { name: nameRepo } } },
@@ -24,7 +24,7 @@ export class RepositoryRepository {
 
     return await userModel.findOneAndUpdate(
       { id: userId },
-      { $push: { repositories: repo } },
+      { $push: { repositories: repoBody } },
       { new: true }
     ).repositories;
   }
