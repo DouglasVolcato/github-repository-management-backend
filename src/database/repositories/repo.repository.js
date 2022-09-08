@@ -19,8 +19,8 @@ export class RepoRepository {
       { $pull: { repositories: { name: nameRepo } } },
       {
         new: true,
-      }.repositories
-    );
+      }
+    ).repositories;
 
     return await userModel.findOneAndUpdate(
       { id: userId },
@@ -32,10 +32,7 @@ export class RepoRepository {
   async delete(userId, nameRepo) {
     return await userModel.findOneAndUpdate(
       { id: userId },
-      { $pull: { repositories: { name: nameRepo } } },
-      {
-        new: true,
-      }.repositories
-    );
+      { $pull: { repositories: { name: nameRepo } } }
+    ).repositories;
   }
 }
