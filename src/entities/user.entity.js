@@ -10,7 +10,7 @@ export class User {
   }
 
   validate() {
-    if (this.id || this.name || this.email) {
+    if (!this.id || !this.name || !this.email) {
       throw new Error("Missing required fields for user.");
     }
   }
