@@ -6,7 +6,7 @@ export class User {
     this.name = user.name;
     this.email = user.email;
     this.photo = user.photo;
-    this.repositories = [...user.repositories];
+    this.repositories = [];
   }
 
   validate() {
