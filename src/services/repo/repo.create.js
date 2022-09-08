@@ -4,10 +4,11 @@ export class CreateRepoUseCase {
   constructor(repository) {
     this.repository = repository;
   }
-  async execute(repoBody) {
+  async execute(userId, repoBody) {
+    const id = userId;
     const newRepo = new Repo(repoBody);
     newRepo.validate();
-    const repo = await this.repository.create(newRepo.getRepo());
+    const repo = await this.repository.create(id, newRepo.getRepo());
     return repo.filter((item) => (item.name = repoBody.name));
   }
 }
