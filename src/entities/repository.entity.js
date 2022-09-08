@@ -11,4 +11,13 @@ export class Repository {
       throw new Error("Missing required fields for Repository.");
     }
   }
+
+  getRepository() {
+    return {
+      name: this.name,
+      link: this.link,
+      priority: this.priority,
+      note: this.note,
+    };
+  }
 }
