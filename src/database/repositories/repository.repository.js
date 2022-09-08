@@ -1,0 +1,41 @@
+import { userModel } from "../Schemas/user.Schema";
+
+export class RepositoryRepository {
+  async create(userId, repo) {
+    return await userModel.findOneAndUpdate(
+      { id: userId },
+      { $push: { repositories: repo } },
+      { new: true }
+    ).repositories;
+  }
+
+  async getAll(userId) {
+    return await userModel.findOne({ id: userId }).repositories;
+  }
+
+  async update(userId, nameRepo, repo) {
+    await userModel.findOneAndUpdate(
+      { id: userId },
+      { $pull: { repositories: { name: nameRepo } } },
+      {
+        new: true,
+      }.repositories
+    );
+
+    return await userModel.findOneAndUpdate(
+      { id: userId },
+      { $push: { repositories: repo } },
+      { new: true }
+    ).repositories;
+  }
+
+  async delete(userId, nameRepo) {
+    return await userModel.findOneAndUpdate(
+      { id: userId },
+      { $pull: { repositories: { name: nameRepo } } },
+      {
+        new: true,
+      }.repositories
+    );
+  }
+}
