@@ -7,6 +7,11 @@ export class UpdateRepositoryUseCase {
   async execute(userId, nameRepo, repoBody) {
     const newRepo = new Repo(repoBody);
     newRepo.validate();
-    return await this.repository.update(userId, nameRepo, newRepo.getRepo());
+    const repo = await this.repository.update(
+      userId,
+      nameRepo,
+      newRepo.getRepo()
+    );
+    return repo.filter((item) => (item.name = nameRepo));
   }
 }
