@@ -1,4 +1,4 @@
-import Repo from "../../entities/repo.entity";
+import Repo from "../../entities/repo.entity.js";
 
 export class CreateRepoUseCase {
   constructor(repository) {

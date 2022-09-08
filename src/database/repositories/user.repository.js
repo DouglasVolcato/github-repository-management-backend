@@ -1,4 +1,4 @@
-import { userModel } from "../Schemas/user.Schema";
+import { userModel } from "../Schemas/user.Schema.js";
 
 export class UserRepository {
   async create(userBody) {
