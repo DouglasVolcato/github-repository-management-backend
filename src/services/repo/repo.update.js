@@ -1,6 +1,6 @@
 import Repo from "../../entities/repo.entity.js";
 
-export class UpdateReposUseCase {
+export class UpdateRepoUseCase {
   constructor(repository) {
     this.repository = repository;
   }
