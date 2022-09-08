@@ -1,5 +1,5 @@
 import { Schema, model } from "mongoose";
-import repositorySchema from "./repository.schema";
+import repositorySchema from "./repo.schema";
 
 const userSchema = new Schema({
   id: { type: String, required: true, unique: true },

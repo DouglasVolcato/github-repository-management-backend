@@ -1,4 +1,4 @@
-import Repository from "../../entities/repository.entity";
+import Repository from "../../entities/repo.entity";
 
 export class UpdateRepositoryUseCase {
   constructor(repository) {
