@@ -10,7 +10,7 @@ export class RepoRoutes {
     );
 
     this.router.delete("/delete/:id/:name", (req, res) =>
-      this.controller.createRepoController(req, res)
+      this.controller.deleteRepoController(req, res)
     );
 
     this.router.get("/get-all/:id", (req, res) =>
