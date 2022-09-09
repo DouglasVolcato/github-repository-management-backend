@@ -1,8 +1,10 @@
-import { Schema } from "mongoose";
+import mongoose from "mongoose";
 
-export const repoSchema = new Schema({
+const repoSchema = new mongoose.Schema({
   name: { type: String, required: true },
   link: { type: String, required: true },
   priority: { type: String, required: true },
   note: { type: String, required: true },
 });
+
+export default repoSchema;

@@ -1,7 +1,7 @@
-import { Schema, model } from "mongoose";
+import mongoose from "mongoose";
 import repoSchema from "./repo.schema.js";
 
-const userSchema = new Schema({
+const userSchema = new mongoose.Schema({
   id: { type: String, required: true, unique: true },
   name: { type: String, required: true, unique: true },
   email: { type: String, reqired: true, select: false },
@@ -9,4 +9,4 @@ const userSchema = new Schema({
   repositories: [repoSchema],
 });
 
-export const userModel = model("User", userSchema);
+export const userModel = mongoose.model("User", userSchema);
