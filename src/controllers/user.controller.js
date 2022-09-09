@@ -16,6 +16,14 @@ export class UserController {
         throw new Error("There is no body in request.");
       }
 
+      const foundUser = await this.getUserByEmailUseCase.execute(
+        userBody.email
+      );
+
+      if (foundUser) {
+        throw new Error("Email already exists in database.");
+      }
+
       const newUser = await this.createUserUseCase.execute(userBody);
 
       if (!newUser) {
@@ -24,7 +32,7 @@ export class UserController {
 
       res.status(200).send(newUser);
     } catch (err) {
-      res.status(400).send({ message: "Error creating user: " + err });
+      res.status(400).send({ message: "Error creating user. " + err });
     }
   }
 
@@ -42,7 +50,7 @@ export class UserController {
 
       res.status(200).send(deletedUser);
     } catch (err) {
-      res.status(400).send({ message: "Error deleting user: " + err });
+      res.status(400).send({ message: "Error deleting user. " + err });
     }
   }
 
@@ -56,7 +64,7 @@ export class UserController {
 
       res.status(200).send(userList);
     } catch (err) {
-      res.status(400).send({ message: "Error getting users: " + err });
+      res.status(400).send({ message: "Error getting users. " + err });
     }
   }
 
@@ -76,7 +84,7 @@ export class UserController {
 
       res.status(200).send(foundUser);
     } catch (err) {
-      res.status(400).send({ message: "Error getting user: " + err });
+      res.status(400).send({ message: "Error getting user. " + err });
     }
   }
 
@@ -96,7 +104,7 @@ export class UserController {
 
       res.status(200).send(foundUser);
     } catch (err) {
-      res.status(400).send({ message: "Error getting user: " + err });
+      res.status(400).send({ message: "Error getting user. " + err });
     }
   }
 
@@ -120,7 +128,7 @@ export class UserController {
 
       res.status(200).send(updatedUser);
     } catch (err) {
-      res.status(400).send({ message: "Error updating user: " + err });
+      res.status(400).send({ message: "Error updating user. " + err });
     }
   }
 }
