@@ -3,6 +3,7 @@ export class GetAllRepoUseCase {
     this.repository = repository;
   }
   async execute(userId) {
-    return await this.repository.getAll(userId);
+    const repo = await this.repository.getAll(userId);
+    return repo.repositories;
   }
 }
