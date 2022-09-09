@@ -23,7 +23,7 @@ export class RepoController {
 
       res.status(200).send(newRepo);
     } catch (err) {
-      res.status(400).send({ message: "Error creating repository: " + err });
+      res.status(400).send({ message: "Error creating repository. " + err });
     }
   }
 
@@ -47,7 +47,7 @@ export class RepoController {
 
       res.status(200).send(deletedRepo);
     } catch (err) {
-      res.status(400).send({ message: "Error deleting repository: " + err });
+      res.status(400).send({ message: "Error deleting repository. " + err });
     }
   }
 
@@ -69,7 +69,7 @@ export class RepoController {
     } catch (err) {
       res
         .status(400)
-        .send({ message: "Error getting repository list: " + err });
+        .send({ message: "Error getting repository list. " + err });
     }
   }
 
