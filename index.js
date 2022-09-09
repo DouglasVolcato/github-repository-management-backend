@@ -18,7 +18,7 @@ const userFactory = makeUserFactory(router);
 app.use(express.json());
 app.use(cors());
 
-app.use("/repo", repoFactory);
-app.use("/user", userFactory);
+app.use("/repo", repoFactory.route());
+app.use("/user", userFactory.route());
 
 Port.portConnect(app);
