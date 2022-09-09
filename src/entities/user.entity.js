@@ -1,6 +1,6 @@
 import { randomUUID } from "node:crypto";
 
-export class User {
+export default class User {
   constructor(user) {
     this.id = randomUUID();
     this.name = user.name;

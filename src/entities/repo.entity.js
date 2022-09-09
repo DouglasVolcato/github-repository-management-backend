@@ -1,4 +1,4 @@
-export class Repository {
+export default class Repository {
   constructor(repo) {
     this.name = repo.name;
     this.link = repo.link;
