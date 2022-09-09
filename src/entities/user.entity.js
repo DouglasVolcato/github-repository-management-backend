@@ -5,7 +5,7 @@ export default class User {
     this.id = randomUUID();
     this.name = user.name;
     this.email = user.email;
-    this.photo = user.photo;
+    this.photo = user.photo ?? "";
     this.repositories = [];
   }
 
