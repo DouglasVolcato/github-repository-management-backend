@@ -15,6 +15,12 @@ export class RepoController {
         throw new Error("Invalid request.");
       }
 
+      const foundRepo = await this.getAllRepoUseCase.execute(userId);
+      const filtered = foundRepo.filter((i) => i.name === repoBody.name);
+      if (filtered.length > 0) {
+        throw new Error("Repository already exists.");
+      }
+
       const newRepo = await this.createRepoUseCase.execute(userId, repoBody);
 
       if (!newRepo) {
@@ -34,6 +40,12 @@ export class RepoController {
 
       if (!userId || !repoName) {
         throw new Error("Invalid id or name in request.");
+      }
+
+      const foundRepo = await this.getAllRepoUseCase.execute(userId);
+      const filtered = foundRepo.filter((i) => i.name === repoName);
+      if (filtered.length === 0) {
+        throw new Error("Repository not found.");
       }
 
       const deletedRepo = await this.deleteRepoUseCase.execute(
@@ -83,6 +95,12 @@ export class RepoController {
 
       if (!userId || !repoBody || !nameRepo) {
         throw new Error("Invalid request.");
+      }
+
+      const foundRepo = await this.getAllRepoUseCase.execute(userId);
+      const filtered = foundRepo.filter((i) => i.name === nameRepo);
+      if (filtered.length == 0) {
+        throw new Error("Repository not found.");
       }
 
       const updatedRepo = await this.updateRepoUseCase.execute(
