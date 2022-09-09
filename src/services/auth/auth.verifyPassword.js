@@ -1,5 +1,8 @@
+import bcrypt from "bcryptjs";
+
 export class AuthVerifyPassword {
-  async execute(password, user) {
-    return user.password === password ? true : false;
+  execute(password, user) {
+    const result = bcrypt.compareSync(password, user.password);
+    return result === true ? true : false;
   }
 }
