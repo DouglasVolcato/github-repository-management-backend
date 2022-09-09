@@ -20,5 +20,7 @@ export class RepoRoutes {
     this.router.put("/update/:id/:name", (req, res) =>
       this.controller.updateRepoController(req, res)
     );
+
+    return this.router;
   }
 }
