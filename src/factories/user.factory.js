@@ -1,7 +1,7 @@
-import { UserRepository } from "../database/repositories/user.repository";
-import * as userServices from "../services/user.services.index";
-import { UserController } from "../controllers/user.controller";
-import { UserRoutes } from "../routes/user.routes";
+import { UserRepository } from "../database/repositories/user.repository.js";
+import * as userServices from "../services/user.services.index.js";
+import { UserController } from "../controllers/user.controller.js";
+import { UserRoutes } from "../routes/user.routes.js";
 
 export function makeUserFactory(router) {
   const userRepository = new UserRepository();
