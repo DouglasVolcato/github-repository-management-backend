@@ -18,9 +18,7 @@ export default class User {
   }
 
   encryptPassWord() {
-    const password = bcrypt.hashSync(this.password, 10)
-    console.log(password)
-    return password
+    return bcrypt.hashSync(this.password, 10);
   }
 
   getUser() {
