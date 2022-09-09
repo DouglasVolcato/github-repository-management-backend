@@ -5,12 +5,13 @@ export default class User {
     this.id = randomUUID();
     this.name = user.name;
     this.email = user.email;
+    this.password = user.password;
     this.photo = user.photo ?? "";
     this.repositories = [];
   }
 
   validate() {
-    if (!this.id || !this.name || !this.email) {
+    if (!this.id || !this.name || !this.email || !this.password) {
       throw new Error("Missing required fields for user.");
     }
   }
@@ -20,6 +21,7 @@ export default class User {
       id: this.id,
       name: this.name,
       email: this.email,
+      password: this.password,
       photo: this.photo,
       repositories: this.repositories,
     };
