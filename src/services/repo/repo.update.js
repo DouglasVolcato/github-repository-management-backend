@@ -12,6 +12,6 @@ export class UpdateRepoUseCase {
       nameRepo,
       newRepo.getRepo()
     );
-    return repo.filter((item) => (item.name = nameRepo));
+    return repo.repositories.filter((item) => item.name === newRepo.name);
   }
 }

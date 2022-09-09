@@ -4,6 +4,6 @@ export class DeleteRepoUseCase {
   }
   async execute(userId, repoName) {
     const repo = await this.repository.delete(userId, repoName);
-    return repo.filter((item) => (item.name = repoName));
+    return repo.repositories.filter((item) => (item.name === repoName));
   }
 }
