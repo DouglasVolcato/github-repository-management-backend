@@ -6,33 +6,30 @@ export class RepoRepository {
       { id: userId },
       { $push: { repositories: repoBody } },
       { new: true }
-    ).repositories;
+    );
   }
 
   async getAll(userId) {
-    return await userModel.findOne({ id: userId }).repositories;
+    return await userModel.findOne({ id: userId });
   }
 
   async update(userId, nameRepo, repoBody) {
     await userModel.findOneAndUpdate(
       { id: userId },
-      { $pull: { repositories: { name: nameRepo } } },
-      {
-        new: true,
-      }
-    ).repositories;
+      { $pull: { repositories: { name: nameRepo } } }
+    );
 
     return await userModel.findOneAndUpdate(
       { id: userId },
       { $push: { repositories: repoBody } },
       { new: true }
-    ).repositories;
+    );
   }
 
   async delete(userId, nameRepo) {
     return await userModel.findOneAndUpdate(
       { id: userId },
       { $pull: { repositories: { name: nameRepo } } }
-    ).repositories;
+    );
   }
 }
