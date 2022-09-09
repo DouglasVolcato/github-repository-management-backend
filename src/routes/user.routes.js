@@ -21,7 +21,7 @@ export class UserRoutes {
       this.controller.getAllUserController(req, res)
     );
 
-    this.router.get("/get-by-email/:email", (req, res) =>
+    this.router.get("/get-by-email/", (req, res) =>
       this.controller.getUserByEmailController(req, res)
     );
 
