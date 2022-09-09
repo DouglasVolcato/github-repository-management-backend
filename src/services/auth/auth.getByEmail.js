@@ -1,4 +1,4 @@
-export class AuthGetByEmail {
+export class GetByEmailUseCase {
   constructor(repository) {
     this.repository = repository;
   }
