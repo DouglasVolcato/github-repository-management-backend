@@ -11,18 +11,18 @@ export class AuthController {
         throw new Error("Invalid email or password.");
       }
 
-      const foundUser = await this.services.authGetByEmail.execute(email);
+      const foundUser = await this.services.getByEmailUseCase.execute(email);
 
       if (!foundUser) {
         throw new Error("Email not found.");
       }
 
-      const verify = this.services.authVerifyPassword(
+      const verify = this.services.verifyPasswordUseCase.execute(
         password,
-        foundUser.password
+        foundUser
       );
 
-      const token = this.services.authGenerateToken(foundUser.id);
+      const token = this.services.generateTokenUseCase.execute(foundUser.id);
 
       if (verify === true) {
         res.status(200).send({ token: token });
