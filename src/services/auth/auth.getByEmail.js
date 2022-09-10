@@ -3,6 +3,6 @@ export class GetByEmailUseCase {
     this.repository = repository;
   }
   async execute(userEmail) {
-    return repo.repositories.getByEmail(userEmail);
+    return this.repository.getByEmail(userEmail);
   }
 }
