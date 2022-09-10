@@ -2,6 +2,7 @@ import { UserRepository } from "../database/repositories/user.repository.js";
 import * as userServices from "../services/user.services.index.js";
 import { UserController } from "../controllers/user.controller.js";
 import { UserRoutes } from "../routes/user.routes.js";
+import { middleware } from "../factories/middleware.factory.js";
 
 export function makeUserFactory(router) {
   const userRepository = new UserRepository();
@@ -26,7 +27,7 @@ export function makeUserFactory(router) {
     updateUserUseCase,
   });
 
-  const userRoutes = new UserRoutes(userController, router);
+  const userRoutes = new UserRoutes(userController, middleware, router);
 
   return userRoutes;
 }
