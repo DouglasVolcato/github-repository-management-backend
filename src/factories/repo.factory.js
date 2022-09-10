@@ -2,6 +2,7 @@ import { RepoRepository } from "../database/repositories/repo.repository.js";
 import * as repoServices from "../services/repo.services.index.js";
 import { RepoController } from "../controllers/repo.controller.js";
 import { RepoRoutes } from "../routes/repo.routes.js";
+import { middleware } from "../factories/middleware.factory.js";
 
 export function makeRepoFactory(router) {
   const repoRepository = new RepoRepository();
@@ -18,7 +19,7 @@ export function makeRepoFactory(router) {
     updateRepoUseCase,
   });
 
-  const repoRoutes = new RepoRoutes(repoController, router);
+  const repoRoutes = new RepoRoutes(repoController, middleware, router);
 
   return repoRoutes;
 }
