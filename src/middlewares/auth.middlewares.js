@@ -20,22 +20,30 @@ export class AuthMiddlewares {
       }
 
       jwt.verify(split[1], process.env.SECRET, async (err, decoded) => {
-        if (err) {
-          throw new Error("Invalid token.");
+        try {
+          if (err) {
+            throw new Error("Invalid token.");
+          }
+
+          const user = await this.services.getUserByIdUseCase.execute(
+            decoded.id
+          );
+
+          if (!user || !user.id) {
+            throw new Error("Invalid token.");
+          }
+
+          req.userId = user.id;
+
+          return next();
+        } catch (err) {
+          return res
+            .status(400)
+            .send({ message: "Authentication error. " + err });
         }
-
-        const user = await this.services.getUserByIdUseCase.execute(decoded.id);
-
-        if (!user || !user.id) {
-          throw new Error("Invalid token.");
-        }
-
-        req.userId = user.id;
-
-        return next();
       });
     } catch (err) {
-      return res.status(401).send({ message: "Authentication error. " + err });
+      return res.status(400).send({ message: "Authentication error. " + err });
     }
   }
 }
