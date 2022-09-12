@@ -6,7 +6,7 @@ export class UserRoutes {
   }
 
   route() {
-    this.router.post("/create--user", (req, res) =>
+    this.router.post("/create-user", (req, res) =>
       this.controller.createUserController(req, res)
     );
 
@@ -29,7 +29,7 @@ export class UserRoutes {
     );
 
     this.router.get(
-      "/get-by-email-user",
+      "/get-by-email-user/:email",
       (req, res, next) => this.middleware.verifyToken(req, res, next),
       (req, res) => this.controller.getUserByEmailController(req, res)
     );

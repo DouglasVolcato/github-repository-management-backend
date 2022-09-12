@@ -70,7 +70,7 @@ export class UserController {
 
   async getUserByEmailController(req, res) {
     try {
-      const userEmail = req.body.email;
+      const userEmail = req.params.email;
 
       if (!userEmail) {
         throw new Error("Invaid email in request.");
