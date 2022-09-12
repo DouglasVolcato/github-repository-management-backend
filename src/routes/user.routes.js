@@ -6,36 +6,36 @@ export class UserRoutes {
   }
 
   route() {
-    this.router.post("/create", (req, res) =>
+    this.router.post("/create--user", (req, res) =>
       this.controller.createUserController(req, res)
     );
 
     this.router.put(
-      "/update",
+      "/update-user",
       (req, res, next) => this.middleware.verifyToken(req, res, next),
       (req, res) => this.controller.updateUserController(req, res)
     );
 
     this.router.delete(
-      "/delete",
+      "/delete-user",
       (req, res, next) => this.middleware.verifyToken(req, res, next),
       (req, res) => this.controller.deleteUserController(req, res)
     );
 
     this.router.get(
-      "/get-all",
+      "/get-all-user",
       (req, res, next) => this.middleware.verifyToken(req, res, next),
       (req, res) => this.controller.getAllUserController(req, res)
     );
 
     this.router.get(
-      "/get-by-email",
+      "/get-by-email-user",
       (req, res, next) => this.middleware.verifyToken(req, res, next),
       (req, res) => this.controller.getUserByEmailController(req, res)
     );
 
     this.router.get(
-      "/get-by-id/:id",
+      "/get-by-id-user/:id",
       (req, res, next) => this.middleware.verifyToken(req, res, next),
       (req, res) => this.controller.getUserByIdController(req, res)
     );
