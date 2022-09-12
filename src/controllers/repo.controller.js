@@ -103,10 +103,12 @@ export class RepoController {
         throw new Error("Repository not found.");
       }
 
+      const finalBody = Object.assign(filtered[0], repoBody)
+
       const updatedRepo = await this.updateRepoUseCase.execute(
         userId,
         nameRepo,
-        repoBody
+        finalBody,
       );
 
       if (!updatedRepo) {
