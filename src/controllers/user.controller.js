@@ -38,7 +38,7 @@ export class UserController {
 
   async deleteUserController(req, res) {
     try {
-      const userId = req.params.id;
+      const userId = req.userId;
       if (!userId) {
         throw new Error("There is no id in request.");
       }
@@ -110,7 +110,7 @@ export class UserController {
 
   async updateUserController(req, res) {
     try {
-      const userId = req.params.id;
+      const userId = req.userId;
       const userBody = req.body;
 
       if (!userId || !userBody) {

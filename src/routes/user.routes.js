@@ -11,13 +11,13 @@ export class UserRoutes {
     );
 
     this.router.put(
-      "/update/:id",
+      "/update",
       (req, res, next) => this.middleware.verifyToken(req, res, next),
       (req, res) => this.controller.updateUserController(req, res)
     );
 
     this.router.delete(
-      "/delete/:id",
+      "/delete",
       (req, res, next) => this.middleware.verifyToken(req, res, next),
       (req, res) => this.controller.deleteUserController(req, res)
     );
@@ -29,7 +29,7 @@ export class UserRoutes {
     );
 
     this.router.get(
-      "/get-by-email/",
+      "/get-by-email",
       (req, res, next) => this.middleware.verifyToken(req, res, next),
       (req, res) => this.controller.getUserByEmailController(req, res)
     );

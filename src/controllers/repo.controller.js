@@ -8,7 +8,7 @@ export class RepoController {
 
   async createRepoController(req, res) {
     try {
-      const userId = req.params.id;
+      const userId = req.userId;
       const repoBody = req.body;
 
       if (!repoBody || !userId) {
@@ -35,7 +35,7 @@ export class RepoController {
 
   async deleteRepoController(req, res) {
     try {
-      const userId = req.params.id;
+      const userId = req.userId;
       const repoName = req.params.name;
 
       if (!userId || !repoName) {
@@ -65,7 +65,7 @@ export class RepoController {
 
   async getAllRepoController(req, res) {
     try {
-      const userId = req.params.id;
+      const userId = req.userId;
 
       if (!userId) {
         throw new Error("Invalid id in request.");
@@ -87,7 +87,7 @@ export class RepoController {
 
   async updateRepoController(req, res) {
     try {
-      const userId = req.params.id;
+      const userId = req.userId;
 
       const nameRepo = req.params.name;
 

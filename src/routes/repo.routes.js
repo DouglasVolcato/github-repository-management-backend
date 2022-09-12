@@ -7,25 +7,25 @@ export class RepoRoutes {
 
   route() {
     this.router.post(
-      "/create/:id",
+      "/create",
       (req, res, next) => this.middleware.verifyToken(req, res, next),
       (req, res) => this.controller.createRepoController(req, res)
     );
 
     this.router.delete(
-      "/delete/:id/:name",
+      "/delete/:name",
       (req, res, next) => this.middleware.verifyToken(req, res, next),
       (req, res) => this.controller.deleteRepoController(req, res)
     );
 
     this.router.get(
-      "/get-all/:id",
+      "/get-all",
       (req, res, next) => this.middleware.verifyToken(req, res, next),
       (req, res) => this.controller.getAllRepoController(req, res)
     );
 
     this.router.put(
-      "/update/:id/:name",
+      "/update/:name",
       (req, res, next) => this.middleware.verifyToken(req, res, next),
       (req, res) => this.controller.updateRepoController(req, res)
     );
