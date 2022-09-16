@@ -3,12 +3,12 @@ import bcrypt from "bcryptjs";
 
 export default class User {
   constructor(user) {
-    this.id = randomUUID();
+    this.id = user.id ?? randomUUID();
     this.name = user.name;
     this.email = user.email;
     this.password = user.password;
     this.photo = user.photo ?? "";
-    this.repositories = [];
+    this.repositories = user.repositories ?? [];
   }
 
   validate() {
@@ -26,7 +26,7 @@ export default class User {
       id: this.id,
       name: this.name,
       email: this.email,
-      password: this.encryptPassWord(),
+      password: this.password === undefined ? "" : this.encryptPassWord(),
       photo: this.photo,
       repositories: this.repositories,
     };

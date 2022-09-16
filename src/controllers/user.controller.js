@@ -117,9 +117,12 @@ export class UserController {
         throw new Error("Incomplete request.");
       }
 
+      const foundUser = await this.getUserByIdUseCase.execute(userId);
+
       const updatedUser = await this.updateUserUseCase.execute(
         userId,
-        userBody
+        userBody,
+        foundUser
       );
 
       if (!updatedUser) {
