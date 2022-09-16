@@ -25,7 +25,7 @@ export class AuthController {
       const token = this.services.generateTokenUseCase.execute(foundUser.id);
 
       if (verify === true) {
-        res.status(200).send({ token: token });
+        res.status(200).send({ token: token, userId: foundUser.id });
       } else {
         throw new Error("Wrong password.");
       }
