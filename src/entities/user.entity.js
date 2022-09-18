@@ -9,6 +9,7 @@ export default class User {
     this.password = user.password;
     this.photo = user.photo ?? "";
     this.repositories = user.repositories ?? [];
+    this.securityKeys = user.securityKeys ?? [];
   }
 
   validate() {
@@ -29,6 +30,7 @@ export default class User {
       password: this.password === undefined ? "" : this.encryptPassWord(),
       photo: this.photo,
       repositories: this.repositories,
+      securityKeys: this.securityKeys,
     };
   }
 }
