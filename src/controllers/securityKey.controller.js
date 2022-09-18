@@ -86,8 +86,6 @@ export class SecurityKeyController {
         }
       }
 
-      console.log(await this.getAllSecurityKeyUseCase.execute(userEmail));
-
       const foundKeys = await this.getAllSecurityKeyUseCase
         .execute(userEmail)
         .then((data) => data.map((item) => item.key));
