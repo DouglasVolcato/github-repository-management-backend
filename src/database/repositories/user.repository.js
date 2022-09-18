@@ -6,24 +6,30 @@ export class UserRepository {
   }
 
   async getByEmail(userEmail) {
-    return await userModel.findOne({ email: userEmail });
+    return await userModel
+      .findOne({ email: userEmail })
+      .select("-securityKeys");
   }
 
   async getById(userId) {
-    return await userModel.findOne({ id: userId });
+    return await userModel.findOne({ id: userId }).select("-securityKeys");
   }
 
   async getAll() {
-    return await userModel.find();
+    return await userModel.find().select("-securityKeys");
   }
 
   async update(userId, userBody) {
-    return await userModel.findOneAndUpdate({ id: userId }, userBody, {
-      new: true,
-    });
+    return await userModel
+      .findOneAndUpdate({ id: userId }, userBody, {
+        new: true,
+      })
+      .select("-securityKeys");
   }
 
   async delete(userId) {
-    return await userModel.findOneAndDelete({ id: userId });
+    return await userModel
+      .findOneAndDelete({ id: userId })
+      .select("-securityKeys");
   }
 }

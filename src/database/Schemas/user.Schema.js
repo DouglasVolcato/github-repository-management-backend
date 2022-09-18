@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import repoSchema from "./repo.schema.js";
+import securityKey from "./securityKey.schema.js";
 
 const userSchema = new mongoose.Schema({
   id: { type: String, required: true, unique: true },
@@ -8,6 +9,7 @@ const userSchema = new mongoose.Schema({
   password: { type: String, reqired: true, select: false },
   photo: { type: String },
   repositories: [repoSchema],
+  securityKeys: [securityKey],
 });
 
 export const userModel = mongoose.model("User", userSchema);
