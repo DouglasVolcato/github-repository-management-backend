@@ -12,7 +12,7 @@ export class UserRepository {
   }
 
   async getById(userId) {
-    return await userModel.findOne({ id: userId }).select("-securityKeys");
+    return await userModel.findOne({ id: userId });
   }
 
   async getAll() {
