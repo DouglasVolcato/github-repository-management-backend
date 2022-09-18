@@ -12,7 +12,7 @@ export class SecurityKeyRoutes {
       (req, res) => this.controller.createSecurityKeyController(req, res)
     );
 
-    this.router.get("/get-security-key-references", (req, res) =>
+    this.router.post("/get-security-key-references", (req, res) =>
       this.controller.getAllSecurityKeyReferencesController(req, res)
     );
 
