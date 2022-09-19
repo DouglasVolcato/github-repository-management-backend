@@ -17,13 +17,11 @@ export class SecurityKeyController {
       }
 
       if (keysBody.length !== 3) {
-        throw new Error("Create at least 3 security keys.");
+        throw new Error("Create 3 security keys.");
       }
 
-      for (let i = 0; i < keysBody.length; i++) {
-        if (i > 0 && keysBody[i] === keysBody[i - 1]) {
-          throw new Error("The keys must be different.");
-        }
+      if (keysBody[0] === keysBody[1] || keysBody[1] === keysBody[2]) {
+        throw new Error("The keys must be different.");
       }
 
       const foundKeys = await this.getAllSecurityKeyUseCase.execute(userEmail);
@@ -80,10 +78,12 @@ export class SecurityKeyController {
         throw new Error("Missing fields in request.");
       }
 
-      for (let i = 0; i < keys.length; i++) {
-        if (i > 0 && keys[i] === keys[i - 1]) {
-          throw new Error("The keys must be different.");
-        }
+      if(newPassword.length < 6){
+        throw new Error("The password must have, at least, 6 characters.");
+      }
+
+      if (keys[0] === keys[1] || keys[1] === keys[2]) {
+        throw new Error("The keys must be different.");
       }
 
       const foundKeys = await this.getAllSecurityKeyUseCase

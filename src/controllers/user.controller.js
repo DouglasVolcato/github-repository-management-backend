@@ -16,6 +16,10 @@ export class UserController {
         throw new Error("There is no body in request.");
       }
 
+      if (userBody.password.length < 6) {
+        throw new Error("The password must have, at least, 6 characters.");
+      }
+
       const foundUser = await this.getUserByEmailUseCase.execute(
         userBody.email
       );
@@ -115,6 +119,10 @@ export class UserController {
 
       if (!userId || !userBody) {
         throw new Error("Incomplete request.");
+      }
+
+      if (userBody.password.length < 6) {
+        throw new Error("The password must have, at least, 6 characters.");
       }
 
       const foundUser = await this.getUserByIdUseCase.execute(userId);
