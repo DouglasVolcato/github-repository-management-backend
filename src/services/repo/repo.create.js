@@ -9,6 +9,6 @@ export class CreateRepoUseCase {
     const newRepo = new Repo(repoBody);
     newRepo.validate();
     const repo = await this.repository.create(id, newRepo.getRepo());
-    return repo.repositories.filter((item) => (item.name === repoBody.name));
+    return repo.repositories.filter((item) => item.name === repoBody.name);
   }
 }
